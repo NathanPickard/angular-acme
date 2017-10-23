@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
 import { IProduct } from './product';
+import { ProductService } from './product.service';
 
 @Component({
   templateUrl: './product-detail.component.html',
@@ -10,6 +11,7 @@ import { IProduct } from './product';
 })
 export class ProductDetailComponent implements OnInit {
   pageTitle: string = 'Product Detail';
+  errorMessage: string;
   product: IProduct;
 
   constructor(private _route: ActivatedRoute, private _router: Router) { }
