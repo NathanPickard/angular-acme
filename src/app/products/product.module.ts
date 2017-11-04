@@ -2,31 +2,44 @@ import { NgModule } from '@angular/core';
 import { ProductDetailComponent } from './product-detail.component';
 import { ConvertToSpacesPipe } from '../shared/convert-to-spaces.pipe';
 import { ProductListComponent } from './product-list.component';
+import { ProductDetailGuard, ProductEditGuard } from './product-guard.service';
+import { ProductEditComponent } from './product-edit.component';
 import { RouterModule } from '@angular/router';
-import { ProductGuardService } from './product-guard.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { ProductData } from './product-data';
 import { ProductService } from './product.service';
 import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
   imports: [
+    SharedModule,
+    ReactiveFormsModule,
+    InMemoryWebApiModule.forRoot(ProductData),
     RouterModule.forChild([
       { path: 'products', component: ProductListComponent },
       {
         path: 'products/:id',
-        canActivate: [ProductGuardService],
+        canActivate: [ProductDetailGuard],
         component: ProductDetailComponent
-      }
+      },
+      {
+        path: 'productEdit/id',
+        canDeactivate: [ProductEditGuard],
+        component: ProductEditComponent
+      },
     ]),
-    SharedModule
   ],
   declarations: [
     ProductListComponent,
     ProductDetailComponent,
+    ProductEditComponent,
     ConvertToSpacesPipe
   ],
   providers: [
     ProductService,
-    ProductGuardService
+    ProductDetailGuard,
+    ProductEditGuard
   ]
 })
 export class ProductModule { }
