@@ -20,6 +20,21 @@ export class ProductService {
       .catch(this.handleError);
   }
 
+  getProduct(id: number): Observable<IProduct> {
+    if (id === 0) {
+      return Observable.of(this.initializeProduct());
+      // return Observable.create((observer: any) => {
+      //     observer.next(this.initializeProduct());
+      //     observer.complete();
+      // });
+    };
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get(url)
+      .map(this.extractData)
+      .do(data => console.log('getProduct: ' + JSON.stringify(data)))
+      .catch(this.handleError);
+  }
+
   private handleError(err: HttpErrorResponse) {
     console.log(err.message);
     return Observable.throw(err.message);
