@@ -8,8 +8,10 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ProductData } from './product-data';
-import { ProductService } from './product.service';
 import { SharedModule } from './../shared/shared.module';
+
+import { ProductFilterPipe } from './product-filter.pipe';
+import { ProductService } from './product.service';
 
 @NgModule({
   imports: [
