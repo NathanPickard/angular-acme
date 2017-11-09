@@ -36,7 +36,8 @@ import { ProductService } from './product.service';
     ProductListComponent,
     ProductDetailComponent,
     ProductEditComponent,
-    ConvertToSpacesPipe
+    ConvertToSpacesPipe,
+    ProductFilterPipe
   ],
   providers: [
     ProductService,
