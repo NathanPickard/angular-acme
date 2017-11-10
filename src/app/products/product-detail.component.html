@@ -1,5 +1,5 @@
 <div class='panel panel-primary' *ngIf='product'>
-  <div class='panel-heading'>
+  <div class='panel-heading' style="font-size:large">
     {{pageTitle + ': ' + product.productName}}
   </div>
 
@@ -32,6 +32,10 @@
             <ai-star [rating]='product.starRating' (ratingClicked)="onRatingClicked($event)">
             </ai-star>
           </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">Tags:</div>
+          <div class="col-md-6">{{product.tags}}</div>
         </div>
       </div>
 
