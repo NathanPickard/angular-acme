@@ -13,39 +13,40 @@ export class ProductListComponent implements OnInit {
   imageMargin: number = 2;
   showImage: boolean = false;
   errorMessage: string;
+  listFilter: string;
 
-  _listFilter: string;
-  get listFilter(): string {
-    return this._listFilter;
-  }
-  set listFilter(value: string) {
-    this._listFilter = value;
-    this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
-  }
+  // get listFilter(): string {
+  //   return this._listFilter;
+  // }
+  // set listFilter(value: string) {
+  //   this._listFilter = value;
+  //   this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+  // }
 
-  filteredProducts: IProduct[];
+  // filteredProducts: IProduct[];
   products: IProduct[] = [];
 
-  constructor(private _productService: ProductService) {
+  constructor(private productService: ProductService) {
   }
 
-  onRatingClicked(message: string): void {
-    this.pageTitle = 'Product List: ' + message;
-  }
 
-  performFilter(filterBy: string): IProduct[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.products.filter((product: IProduct) =>
-      product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
-  }
+  // performFilter(filterBy: string): IProduct[] {
+  //   filterBy = filterBy.toLocaleLowerCase();
+  //   return this.products.filter((product: IProduct) =>
+  //     product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  // }
 
   toggleImage(): void {
     this.showImage = !this.showImage;
   }
 
   ngOnInit(): void {
-    this._productService.getProducts()
+    this.productService.getProducts()
       .subscribe(products => this.products = products,
       error => this.errorMessage = <any>error);
+  }
+
+  onRatingClicked(message: string): void {
+    this.pageTitle = 'Product List: ' + message;
   }
 }

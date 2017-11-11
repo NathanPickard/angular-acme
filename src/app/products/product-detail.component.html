@@ -39,10 +39,11 @@
         </div>
       </div>
 
-      <div class='col-md-6'>
+      <div class='col-md-6' *ngIf="product.imageUrl">
         <img class='center-block img-responsive' [style.width.px]='200' [style.margin.px]='2' [src]='product.imageUrl' [title]='product.productName'>
       </div>
     </div>
+    <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
   </div>
 
   <div class='panel-footer'>

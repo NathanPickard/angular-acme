@@ -16,7 +16,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   product: IProduct;
   private sub: Subscription;
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private productService: ProductService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductService) { }
 
   ngOnInit(): void {
     // let id = +this._route.snapshot.paramMap.get('id');
@@ -32,7 +32,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     //   "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
     // }
 
-    this.sub = this._route.params.subscribe(
+    this.sub = this.route.params.subscribe(
       params => {
         let id = +params['id'];
         this.getProduct(id);
@@ -40,7 +40,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   onBack(): void {
-    this._router.navigate(['/products']);
+    this.router.navigate(['/products']);
   }
 
   ngOnDestroy() {
