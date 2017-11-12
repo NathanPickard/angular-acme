@@ -10,7 +10,7 @@
     "serve": "lite-server -c=bs-config.json",
     "prestart": "npm run build",
     "test": "ng test",
-    "lint": "ng lint --type-check",
+    "lint": "tslint ./src/**/*.ts -t verbose",
     "e2e": "ng e2e"
   },
   "author": "Nathan Pickard <nathan.pickard87@gmail.com>",
@@ -25,6 +25,7 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "rxjs": "^5.4.1",

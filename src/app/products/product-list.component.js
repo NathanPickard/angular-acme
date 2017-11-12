@@ -18,15 +18,6 @@ var ProductListComponent = (function () {
         this.imageWidth = 50;
         this.imageMargin = 2;
         this.showImage = false;
-        // get listFilter(): string {
-        //   return this._listFilter;
-        // }
-        // set listFilter(value: string) {
-        //   this._listFilter = value;
-        //   this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
-        // }
-        // filteredProducts: IProduct[];
-        this.products = [];
     }
     // performFilter(filterBy: string): IProduct[] {
     //   filterBy = filterBy.toLocaleLowerCase();
